@@ -34,7 +34,7 @@
     getImages();
     
     function appendImages(data){
-
+        document.getElementById('container').innerHTML = "";
         data.map((e) => {
             let image = document.createElement("img");
             let imageDiv = document.createElement("div");
