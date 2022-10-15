@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="searchDiv">
+        <a id="anchorSearch" href="search.html">
+            <h1>Click here to search by Breed Name</h1>
+        </a>
+    </div>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+
+<script>   
+    let puppy = [];
+    async function getAll() {
+        try {
+            let req = await fetch('https://dog.ceo/api/breeds/list/all');
+
+            let res = await req.json();
+            makeCard(res.message);
+
+        }
+        catch (e) {
+            console.log('error:', e);
+        }
+    }
+    getAll();
+
+    function makeCard(data){
+        let content = document.getElementById('container');
+    
+        Object.keys(data).forEach(function(key, index) {
+            console.log(key);
+            let innerDiv = document.createElement('div');
+            innerDiv.setAttribute('id','card');
+            let name = document.createElement('h1');
+            name.setAttribute('id', 'anchor');
+            name.innerText = key;
+            innerDiv.addEventListener('click', function(){
+                addTo(key);
+                window.location.href = 'puppy.html';
+            })
+            innerDiv.append(name);
+            content.appendChild(innerDiv);
+        });
+
+        function addTo(key) {
+            puppy.push(key);
+            localStorage.setItem('puppyName', JSON.stringify(puppy));
+        }
+    }
+
+</script>

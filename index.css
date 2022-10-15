@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    font-family: karla, monospace;
+}
+#container{
+    border: 1px solid transparent;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    background-color: #FAF7F0;
+}
+
+#searchDiv{
+    text-align: center;
+    border: 1px solid transparent;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    background-color: antiquewhite;
+}
+
+#anchorSearch{
+    text-decoration: none;
+    color: #150050;
+}
+
+#card {
+    width: 300px;
+    padding: 5px;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+    margin-top: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #98A8F8;
+}
+
+#anchor{
+    text-decoration: none;
+    font-size: 40px;
+    margin-top: 15px;
+    color: #150050;
+}

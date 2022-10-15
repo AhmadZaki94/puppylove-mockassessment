@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="puppy.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+
+<script>
+    let puppyName = JSON.parse(localStorage.getItem('puppyName'));
+    console.log(puppyName[0]);
+
+    async function getImages() {
+        try{
+            let req = await fetch(`https://dog.ceo/api/breed/${puppyName[0]}/images`);
+
+            let res = await req.json();
+            console.log(res);
+            appendImages(res.message);
+        }
+        catch(error){
+            console.log("error:",error);
+        }
+    }
+
+    getImages();
+    
+    function appendImages(data){
+
+        data.map((e) => {
+            let image = document.createElement("img");
+            let imageDiv = document.createElement("div");
+            imageDiv.setAttribute("id", "puppyDiv");
+            
+            image.setAttribute('id', 'puppyImage');
+            image.src = e; 
+            imageDiv.append(image);
+
+            document.getElementById('container').append(imageDiv);
+        })
+
+
+    }
+</script>
